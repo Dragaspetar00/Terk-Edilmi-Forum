@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üyeler - Sözlük 12</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                SÖZLÜK 12
+                <span id="online-counter">çevrimiçi: <span class="glitch-text">??</span></span>
+            </div>
+        </div>
+
+        <!-- NAVİGASYON -->
+        <div class="nav">
+            <a href="index.html">ana sayfa</a>
+            <a href="topic.html">güncel konular</a>
+            <a href="archive.html">arşiv</a>
+            <a href="chat.html" class="broken">sohbet</a>
+            <a href="members.html" class="broken">üyeler</a>
+            <a href="radio.html" class="broken">radyo</a>
+            <a href="echo.html" class="mysterious" style="float:right; color:#8b0000;">?</a>
+        </div>
+
+        <!-- ANA İÇERİK -->
+        <div class="main-content">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="index.html">ana sayfa</a> » üye listesi
+                </div>
+
+                <h1 class="page-title">Üye Listesi</h1>
+
+                <div class="system-notice" style="background: rgba(139,0,0,0.1); border-color: #8b0000;">
+                    ⚠ Üye veritabanı bağlantı hatası. Önbellekten gösteriliyor. Son güncelleme: 2016-08-14
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <input type="text" placeholder="Üye ara..." disabled style="flex: 1; padding: 8px; background: #f9f9f9; border: 1px solid #ccc; font-size: 11px; opacity: 0.5;">
+                        <button disabled style="padding: 8px 20px; background: #999; color: #fff; border: none; cursor: not-allowed;">Ara</button>
+                    </div>
+                    <div style="font-size: 10px; color: #999;">
+                        Toplam: <span style="text-decoration: line-through;">14,283 üye</span> <span class="glitch-text">??? üye</span>
+                    </div>
+                </div>
+
+                <!-- ÜYE TABLOSU -->
+                <table class="forum-table">
+                    <thead>
+                        <tr>
+                            <th>Kullanıcı Adı</th>
+                            <th>Kayıt Tarihi</th>
+                            <th>Son Giriş</th>
+                            <th>Mesaj</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>admin</strong></td>
+                            <td class="date-old">2008-03-12</td>
+                            <td class="date-old">2016-08-14</td>
+                            <td>1,247</td>
+                            <td><span style="color:#999;">Offline</span></td>
+                        </tr>
+                        <tr style="opacity: 0.7;">
+                            <td><span style="text-decoration: line-through;">nostaljikci</span></td>
+                            <td class="date-old">2009-01-22</td>
+                            <td class="date-old">2015-03-14</td>
+                            <td>8,441</td>
+                            <td><span style="color:#999;">Inactive</span></td>
+                        </tr>
+                        <tr style="opacity: 0.7;">
+                            <td><span style="text-decoration: line-through;">sabahçı_kız</span></td>
+                            <td class="date-old">2008-06-15</td>
+                            <td class="date-old">2016-07-20</td>
+                            <td>12,336</td>
+                            <td><span style="color:#999;">Inactive</span></td>
+                        </tr>
+                        <tr style="opacity: 0.7;">
+                            <td><span style="text-decoration: line-through;">geceyarısı</span></td>
+                            <td class="date-old">2008-11-03</td>
+                            <td class="date-old">2014-12-25</td>
+                            <td>15,892</td>
+                            <td><span style="color:#999;">Inactive</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:#5a6b5a;">arel</strong> <span style="font-size:9px; color:#666;">[Moderatör]</span></td>
+                            <td class="date-old">2008-04-15</td>
+                            <td class="date-old">2016-08-14</td>
+                            <td>7,992</td>
+                            <td><span style="color:#999;">Offline</span></td>
+                        </tr>
+                        <tr style="opacity: 0.7;">
+                            <td><span style="text-decoration: line-through;">hatırlayan</span></td>
+                            <td class="date-old">2010-02-08</td>
+                            <td class="date-old">2015-03-14</td>
+                            <td>6,441</td>
+                            <td><span style="color:#999;">Inactive</span></td>
+                        </tr>
+                        <tr style="opacity: 0.7;">
+                            <td><span style="text-decoration: line-through;">endişeli_üye</span></td>
+                            <td class="date-old">2011-09-12</td>
+                            <td class="date-old">2016-07-28</td>
+                            <td>892</td>
+                            <td><span style="color:#999;">Inactive</span></td>
+                        </tr>
+                        <tr style="opacity: 0.7;">
+                            <td><span style="text-decoration: line-through;">son_kullanıcı</span></td>
+                            <td class="date-old">2016-08-14</td>
+                            <td class="date-old">2016-08-14</td>
+                            <td>1</td>
+                            <td><span style="color:#999;">Inactive</span></td>
+                        </tr>
+
+                        <!-- BOZUK KAYITLAR -->
+                        <tr style="background: rgba(139,0,0,0.05); animation: rowGlitch 3s infinite;">
+                            <td colspan="5" style="text-align: center; color:#999; padding: 20px;">
+                                <span class="glitch-text">[ Veri bozulması tespit edildi ]</span>
+                            </td>
+                        </tr>
+
+                        <!-- ANOMALY -->
+                        <tr style="background: rgba(139,0,0,0.1); border: 2px solid #8b0000;">
+                            <td><strong style="color:#8b0000;">arel</strong> <span style="font-size:9px; color:#8b0000;">[ANOMALY]</span></td>
+                            <td class="date-old">2008-04-15</td>
+                            <td class="date-anomaly">2 saat önce</td>
+                            <td><span class="glitch-text">????</span></td>
+                            <td><span style="color:#0f0; animation: pulsate 2s infinite;">● Online</span></td>
+                        </tr>
+
+                        <tr style="opacity: 0.3;">
+                            <td colspan="5" style="text-align: center; padding: 20px; font-size: 10px; color:#666;">
+                                <span class="glitch-text">███████████ daha fazla üye ████████</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="system-notice" style="margin-top: 30px; background: rgba(139,0,0,0.05); border-color: #8b0000;">
+                    ℹ Veritabanı inconsistency: Kullanıcı 'arel' hem 2016'da çıkış yaptı hem de şu anda çevrimiçi görünüyor.
+                </div>
+
+                <div style="margin-top: 30px; opacity: 0.5; font-size: 9px; text-align: right;">
+                    <span class="typing-indicator"></span>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="sidebar-box">
+                    <h3>Üye İstatistikleri</h3>
+                    <div style="font-size:10px; color:#666;">
+                        Toplam üye: <span style="text-decoration:line-through;">14,283</span><br>
+                        Aktif üye: <span style="text-decoration:line-through;">0</span><br>
+                        Pasif üye: <span style="text-decoration:line-through;">14,283</span><br>
+                        <br>
+                        <span style="color:#8b0000;">Online: <span id="online-now">1</span></span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 2s;">
+                    <h3>En Aktif Üyeler</h3>
+                    <div style="font-size:9px; color:#999;">
+                        1. <span style="text-decoration:line-through;">geceyarısı</span><br>
+                        2. <span style="text-decoration:line-through;">sabahçı_kız</span><br>
+                        3. <span style="text-decoration:line-through;">nostaljikci</span><br>
+                        4. <span style="color:#8b0000;">arel</span><br>
+                        5. <span style="text-decoration:line-through;">hatırlayan</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box ghost" style="animation-delay: 4s;">
+                    <h3>Çevrimiçi Kullanıcılar</h3>
+                    <div style="font-size:10px; color:#8b0000;">
+                        <span style="color:#0f0;">●</span> <strong>arel</strong><br>
+                        <span class="glitch-text">● ████████</span><br>
+                        <br>
+                        <span style="font-size:9px; opacity:0.5;">
+                        [Son aktivite: <span class="date-anomaly">şimdi</span>]
+                        </span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 6s; opacity:0.3;">
+                    <h3>Yeni Üyeler</h3>
+                    <div style="font-size:9px; color:#999;">
+                        Son üye kaydı:<br>
+                        <span style="text-decoration:line-through;">2016-08-14</span><br>
+                        <br>
+                        <span style="color:#8b0000;">Kayıt: Kapalı</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-text" style="font-size: 11px;">
+                Sözlük 12 – hiçbir yer unutulmaz.
+            </div>
+            <div class="copyright">
+                © 1998-<span class="year-glitch" id="year">2000</span> | 
+                <span style="opacity:0.5">Tüm hakları <span class="glitch-text">████████</span></span>
+            </div>
+            <div style="margin-top:10px; opacity:0.3; font-size:8px;">
+                <span class="typing-indicator"></span>
+                <span id="hidden-message" style="display:none; color:#8b0000;">sadece bir kişi kaldı</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

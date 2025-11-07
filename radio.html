@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radyo - Sözlük 12</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* RADYO PLAYER ÖZEL STİLLER */
+        .player-button {
+            background: linear-gradient(180deg, #555 0%, #333 100%);
+            color: #ddd;
+            border: 2px solid #222;
+            padding: 10px 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: Verdana;
+        }
+        .player-button:hover:not(:disabled) {
+            background: linear-gradient(180deg, #666 0%, #444 100%);
+            border-color: #0f0;
+            box-shadow: 0 0 10px rgba(0,255,0,0.3);
+        }
+        .player-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .player-button.active {
+            background: linear-gradient(180deg, #0a0 0%, #070 100%);
+            border-color: #0f0;
+            box-shadow: 0 0 15px rgba(0,255,0,0.5);
+        }
+        .volume-control {
+            width: 100%;
+            height: 5px;
+            background: #333;
+            border: 1px solid #222;
+            cursor: pointer;
+        }
+        .volume-control::-webkit-slider-thumb {
+            width: 15px;
+            height: 15px;
+            background: #0f0;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .playlist-item {
+            padding: 8px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.8);
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .playlist-item:hover {
+            background: rgba(255,255,200,0.5);
+            border-color: #999;
+        }
+        .playlist-item.active {
+            background: rgba(0,255,0,0.2);
+            border: 2px solid #0f0;
+            font-weight: bold;
+        }
+        .playlist-item.ghost {
+            opacity: 0.3;
+            text-decoration: line-through;
+        }
+        .visualizer {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 3px;
+            height: 50px;
+            margin: 15px 0;
+        }
+        .visualizer-bar {
+            width: 8px;
+            background: #0f0;
+            transition: height 0.1s;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                SÖZLÜK 12
+                <span id="online-counter">çevrimiçi: <span class="glitch-text">??</span></span>
+            </div>
+        </div>
+
+        <!-- NAVİGASYON -->
+        <div class="nav">
+            <a href="index.html">ana sayfa</a>
+            <a href="topic.html">güncel konular</a>
+            <a href="archive.html">arşiv</a>
+            <a href="chat.html" class="broken">sohbet</a>
+            <a href="members.html" class="broken">üyeler</a>
+            <a href="radio.html" class="broken">radyo</a>
+            <a href="echo.html" class="mysterious" style="float:right; color:#8b0000;">?</a>
+        </div>
+
+        <!-- ANA İÇERİK -->
+        <div class="main-content">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="index.html">ana sayfa</a> » radyo
+                </div>
+
+                <h1 class="page-title">Sözlük 12 Radyo</h1>
+
+                <div class="system-notice" style="background: rgba(0,255,0,0.1); border-color: #0a0;">
+                    ℹ Sinyal tespit edildi! Radyo yayını başlatılıyor...
+                </div>
+
+                <!-- RADYO PLAYER (ÇALIŞAN) -->
+                <div style="margin: 30px auto; max-width: 500px; background: linear-gradient(180deg, #666 0%, #333 100%); border: 3px solid #222; padding: 30px; box-shadow: inset 0 0 30px rgba(0,0,0,0.5), 0 5px 20px rgba(0,0,0,0.3);">
+                    
+                    <!-- LOGO/VISUAL -->
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div id="radio-logo" style="width: 100px; height: 100px; margin: 0 auto; background: #0a0; border: 3px solid #0f0; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #000; font-weight: bold; box-shadow: 0 0 20px rgba(0,255,0,0.5);">
+                            ♪
+                        </div>
+                        <div style="margin-top: 15px; color: #0f0; font-size: 12px; font-weight: bold;" id="status-text">
+                            HAZIR
+                        </div>
+                    </div>
+
+                    <!-- VİZUALİZER -->
+                    <div class="visualizer" id="visualizer">
+                        <div class="visualizer-bar" style="height: 10px;"></div>
+                        <div class="visualizer-bar" style="height: 20px;"></div>
+                        <div class="visualizer-bar" style="height: 15px;"></div>
+                        <div class="visualizer-bar" style="height: 30px;"></div>
+                        <div class="visualizer-bar" style="height: 25px;"></div>
+                        <div class="visualizer-bar" style="height: 35px;"></div>
+                        <div class="visualizer-bar" style="height: 20px;"></div>
+                        <div class="visualizer-bar" style="height: 15px;"></div>
+                        <div class="visualizer-bar" style="height: 10px;"></div>
+                    </div>
+
+                    <!-- ŞİMDİ ÇALIYOR -->
+                    <div style="background: #000; padding: 15px; border: 2px solid #444; margin: 20px 0;">
+                        <div style="color: #0f0; font-family: 'Courier New', monospace; font-size: 11px; text-align: center;">
+                            <div style="opacity: 0.7;">
+                                ♪ Şimdi çalıyor ♪
+                            </div>
+                            <div id="now-playing" style="margin: 10px 0; font-size: 14px; color: #0f0; min-height: 40px;">
+                                [Bir şarkı seçin]
+                            </div>
+                            <div style="opacity: 0.7;">
+                                DJ: <span id="current-dj" style="color: #ff0;">arel</span>
+                            </div>
+                            <div style="margin-top: 10px; font-size: 10px; opacity: 0.5;">
+                                <span id="current-time">00:00</span> / <span id="total-time">00:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KONTROLLER -->
+                    <div style="text-align: center; margin: 20px 0;">
+                        <button id="btn-prev" class="player-button" style="margin: 0 5px;">⏮ Önceki</button>
+                        <button id="btn-play" class="player-button" style="margin: 0 5px; padding: 10px 30px;">▶ OYNAT</button>
+                        <button id="btn-next" class="player-button" style="margin: 0 5px;">Sonraki ⏭</button>
+                    </div>
+
+                    <!-- SES KONTROLÜ -->
+                    <div style="margin: 20px 0;">
+                        <div style="color: #999; font-size: 10px; margin-bottom: 5px; text-align: center;">
+                            🔊 Ses: <span id="volume-text">50</span>%
+                        </div>
+                        <input type="range" id="volume-slider" class="volume-control" min="0" max="100" value="50">
+                    </div>
+
+                    <!-- PROGRESS BAR -->
+                    <div style="background: #000; height: 8px; border: 1px solid #444; cursor: pointer; position: relative;" id="progress-container">
+                        <div id="progress-bar" style="background: #0f0; height: 100%; width: 0%; transition: width 0.1s; box-shadow: 0 0 10px rgba(0,255,0,0.5);"></div>
+                    </div>
+
+                    <!-- HIDDEN AUDIO PLAYER -->
+                    <audio id="audio-player" preload="metadata"></audio>
+                </div>
+
+                <!-- PLAYLIST -->
+                <div style="margin: 30px 0;">
+                    <h2 style="font-size: 14px; margin-bottom: 15px; color: #3a4a3a;">
+                        📻 Çalma Listesi <span id="listener-count" style="font-size: 10px; color: #0f0;">[Dinleyen: <span id="listeners">1</span>]</span>
+                    </h2>
+                    
+                    <div id="playlist" style="max-height: 400px; overflow-y: auto;">
+                        <!-- Playlist buraya JS ile eklenecek -->
+                    </div>
+
+                    <div style="margin-top: 15px; padding: 10px; background: rgba(0,255,0,0.05); border: 1px dashed #0a0; font-size: 10px; color: #666; text-align: center;">
+                        ℹ Şarkılarınızı <strong>music/</strong> klasörüne ekleyin ve aşağıdaki script'i güncelleyin
+                    </div>
+                </div>
+
+                <!-- ESKİ YAYINLAR -->
+                <div style="margin: 30px 0;">
+                    <h2 style="font-size: 14px; margin-bottom: 15px; color: #3a4a3a;">Arşiv Kayıtları</h2>
+                    
+                    <div class="message-box" style="opacity: 0.6;">
+                        <div class="message-author deleted">arel</div>
+                        <div class="message-date">2012-05-20 23:47</div>
+                        <div class="message-content">
+                            Bugünkü yayın çok güzeldi arkadaşlar! 47 kişi dinledi, rekor kırdık :)<br>
+                            Yarın akşam yine görüşmek üzere!
+                        </div>
+                    </div>
+
+                    <div class="message-box ghost">
+                        <div class="message-author deleted">nostaljikci</div>
+                        <div class="message-date">2012-03-15 21:15</div>
+                        <div class="message-content">
+                            eski şarkılar çaldığın için teşekkürler arel. gözlerim doldu resmen...
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; opacity: 0.5; font-size: 9px; text-align: right;">
+                    <span class="typing-indicator"></span>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="sidebar-box">
+                    <h3>Radyo Bilgileri</h3>
+                    <div style="font-size:10px; color:#666;">
+                        Durum: <span id="radio-status" style="color:#0f0;">● Online</span><br>
+                        Şarkı sayısı: <span id="song-count">0</span><br>
+                        Format: MP3<br>
+                        <br>
+                        Dinleyici: <span style="color:#0f0;" id="sidebar-listeners">1</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 2s;">
+                    <h3>Şimdi Çalan</h3>
+                    <div style="font-size:9px; color:#333;" id="sidebar-nowplaying">
+                        [Beklemede]
+                    </div>
+                </div>
+
+                <div class="sidebar-box ghost" style="animation-delay: 4s;">
+                    <h3>🎵 Geçmiş Yayınlar</h3>
+                    <div style="font-size:9px; color:#999;">
+                        <span style="text-decoration:line-through;">Cuma Gecesi Özel</span><br>
+                        <span style="text-decoration:line-through;">Nostaljik Akşamlar</span><br>
+                        <span style="text-decoration:line-through;">Gece Yarısı Express</span><br>
+                        <br>
+                        <span style="color:#0f0;">ŞİMDİ: Canlı Yayın</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 6s; opacity:0.5;">
+                    <h3>Teknik Bilgi</h3>
+                    <div style="font-size:9px; color:#999; font-family: monospace;">
+                        Codec: MP3<br>
+                        Bitrate: 128kbps<br>
+                        Sample: 44.1kHz<br>
+                        Status: <span style="color:#0f0;">PLAYING</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-text" style="font-size: 11px;">
+                Sözlük 12 – hiçbir yer unutulmaz.
+            </div>
+            <div class="copyright">
+                © 1998-<span class="year-glitch" id="year">2000</span> | 
+                <span style="opacity:0.5">Tüm hakları <span class="glitch-text">████████</span></span>
+            </div>
+            <div style="margin-top:10px; opacity:0.3; font-size:8px;">
+                <span class="typing-indicator"></span>
+                <span id="hidden-message" style="display:none; color:#8b0000;">müzik hiç bitmez</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // ============================================
+        // RADYO PLAYER SCRIPT
+        // ============================================
+
+        // ŞARKILARINIZI BURAYA EKLEYİN
+        const playlist = [
+            {
+                title: "Frekans gece 12",
+                artist: "Sözlük 12 Radyo",
+                file: "music/song1.mp3",  // music/ klasörüne ekleyin
+                dj: "arel",
+                active: true
+            },
+            {
+                title: "Nostaljik Anılar",
+                artist: "Bilinmeyen Sanatçı",
+                file: "music/song2.mp3",
+                dj: "nostaljikci",
+                active: true
+            },
+            {
+                title: "Gece Yarısı Blues",
+                artist: "Midnight Special",
+                file: "music/song3.mp3",
+                dj: "geceyarısı",
+                active: true
+            },
+            // ESKİ KAYITLAR (HAYALET)
+            {
+                title: "2008 Açılış Özel",
+                artist: "Arşiv Kaydı",
+                file: "",
+                dj: "admin",
+                active: false
+            },
+            {
+                title: "Unutulmaz Geceler",
+                artist: "Kayıp Dosya",
+                file: "",
+                dj: "arel",
+                active: false
+            }
+        ];
+
+        // Global değişkenler
+        let currentTrack = 0;
+        let isPlaying = false;
+        const audio = document.getElementById('audio-player');
+
+        // DOM elementleri
+        const btnPlay = document.getElementById('btn-play');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const volumeSlider = document.getElementById('volume-slider');
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+        const nowPlaying = document.getElementById('now-playing');
+        const currentTimeEl = document.getElementById('current-time');
+        const totalTimeEl = document.getElementById('total-time');
+        const statusText = document.getElementById('status-text');
+        const playlistContainer = document.getElementById('playlist');
+
+        // Playlist oluştur
+        function renderPlaylist() {
+            playlistContainer.innerHTML = '';
+            document.getElementById('song-count').textContent = playlist.filter(s => s.active).length;
+
+            playlist.forEach((song, index) => {
+                const item = document.createElement('div');
+                item.className = 'playlist-item' + (!song.active ? ' ghost' : '') + (index === currentTrack ? ' active' : '');
+                item.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-size: 11px; font-weight: bold; color: #333;">
+                                ${index + 1}. ${song.title}
+                            </div>
+                            <div style="font-size: 9px; color: #666; margin-top: 3px;">
+                                ${song.artist} • DJ: ${song.dj}
+                            </div>
+                        </div>
+                        <div style="font-size: 18px; opacity: 0.5;">
+                            ${song.active ? '▶' : '✗'}
+                        </div>
+                    </div>
+                `;
+                
+                if (song.active) {
+                    item.onclick = () => {
+                        currentTrack = index;
+                        loadTrack();
+                        playTrack();
+                    };
+                }
+                
+                playlistContainer.appendChild(item);
+            });
+        }
+
+        // Şarkı yükle
+        function loadTrack() {
+            const song = playlist[currentTrack];
+            if (!song.active) {
+                // Aktif olmayan şarkıyı atla
+                nextTrack();
+                return;
+            }
+
+            audio.src = song.file;
+            nowPlaying.innerHTML = `
+                <strong>${song.title}</strong><br>
+                <span style="font-size: 11px; opacity: 0.8;">${song.artist}</span>
+            `;
+            document.getElementById('current-dj').textContent = song.dj;
+            document.getElementById('sidebar-nowplaying').innerHTML = `
+                <strong style="color:#0f0;">${song.title}</strong><br>
+                ${song.artist}
+            `;
+            
+            renderPlaylist();
+        }
+
+        // Oynat
+        function playTrack() {
+            audio.play();
+            isPlaying = true;
+            btnPlay.innerHTML = '⏸ DURAKLAT';
+            btnPlay.classList.add('active');
+            statusText.textContent = 'CANLI YAYIN';
+            statusText.style.color = '#0f0';
+            document.getElementById('radio-status').innerHTML = '<span style="color:#0f0;">● Online</span>';
+            startVisualizer();
+        }
+
+        // Duraklat
+        function pauseTrack() {
+            audio.pause();
+            isPlaying = false;
+            btnPlay.innerHTML = '▶ OYNAT';
+            btnPlay.classList.remove('active');
+            statusText.textContent = 'DURAKLAT';
+            statusText.style.color = '#ff0';
+            stopVisualizer();
+        }
+
+        // Sonraki
+        function nextTrack() {
+            do {
+                currentTrack = (currentTrack + 1) % playlist.length;
+            } while (!playlist[currentTrack].active);
+            loadTrack();
+            if (isPlaying) playTrack();
+        }
+
+        // Önceki
+        function prevTrack() {
+            do {
+                currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            } while (!playlist[currentTrack].active);
+            loadTrack();
+            if (isPlaying) playTrack();
+        }
+
+        // Zaman formatla
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Visualizer
+        let visualizerInterval;
+        function startVisualizer() {
+            const bars = document.querySelectorAll('.visualizer-bar');
+            visualizerInterval = setInterval(() => {
+                bars.forEach(bar => {
+                    const height = Math.random() * 40 + 5;
+                    bar.style.height = height + 'px';
+                });
+            }, 100);
+        }
+
+        function stopVisualizer() {
+            clearInterval(visualizerInterval);
+            const bars = document.querySelectorAll('.visualizer-bar');
+            bars.forEach(bar => {
+                bar.style.height = '5px';
+            });
+        }
+
+        // Event listeners
+        btnPlay.onclick = () => {
+            if (isPlaying) {
+                pauseTrack();
+            } else {
+                playTrack();
+            }
+        };
+
+        btnNext.onclick = nextTrack;
+        btnPrev.onclick = prevTrack;
+
+        volumeSlider.oninput = (e) => {
+            const volume = e.target.value / 100;
+            audio.volume = volume;
+            document.getElementById('volume-text').textContent = e.target.value;
+        };
+
+        audio.ontimeupdate = () => {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = progress + '%';
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+            totalTimeEl.textContent = formatTime(audio.duration || 0);
+        };
+
+        audio.onended = () => {
+            nextTrack();
+        };
+
+        audio.onloadedmetadata = () => {
+            totalTimeEl.textContent = formatTime(audio.duration);
+        };
+
+        progressContainer.onclick = (e) => {
+            const rect = progressContainer.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = percent * audio.duration;
+        };
+
+        // Dinleyici sayısı artışı (fake)
+        setInterval(() => {
+            if (isPlaying && Math.random() > 0.7) {
+                const count = Math.floor(Math.random() * 5) + 1;
+                document.getElementById('listeners').textContent = count;
+                document.getElementById('sidebar-listeners').textContent = count;
+            }
+        }, 5000);
+
+        // Logo animasyon
+        setInterval(() => {
+            if (isPlaying) {
+                const logo = document.getElementById('radio-logo');
+                logo.style.transform = 'scale(' + (0.95 + Math.random() * 0.1) + ')';
+            }
+        }, 200);
+
+        // İlk yükleme
+        audio.volume = 0.5;
+        renderPlaylist();
+        loadTrack();
+
+        console.log('🎵 Radyo hazır! Şarkı eklemek için playlist dizisini düzenleyin.');
+    </script>
+</body>
+</html>

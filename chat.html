@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sohbet - Sözlük 12</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                SÖZLÜK 12
+                <span id="online-counter">çevrimiçi: <span class="glitch-text">??</span></span>
+            </div>
+        </div>
+
+        <!-- NAVİGASYON -->
+        <div class="nav">
+            <a href="index.html">ana sayfa</a>
+            <a href="topic.html">güncel konular</a>
+            <a href="archive.html">arşiv</a>
+            <a href="chat.html" class="broken">sohbet</a>
+            <a href="members.html" class="broken">üyeler</a>
+            <a href="radio.html" class="broken">radyo</a>
+            <a href="echo.html" class="mysterious" style="float:right; color:#8b0000;">?</a>
+        </div>
+
+        <!-- ANA İÇERİK -->
+        <div class="main-content">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="index.html">ana sayfa</a> » sohbet
+                </div>
+
+                <h1 class="page-title">Sohbet Odası</h1>
+
+                <div class="system-notice" style="background: rgba(139,0,0,0.1); border-color: #8b0000;">
+                    ⚠ Sohbet servisi 2014 yılından beri kapalıdır. Aşağıdaki mesajlar önbellekten yüklenmektedir.
+                </div>
+
+                <!-- SOHBET PENCERESI -->
+                <div style="margin: 20px 0; background: #000; border: 3px solid #333; padding: 0; height: 400px; overflow: hidden; position: relative;">
+                    <!-- ESKI CRT EKRAN EFEKTİ -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,0,0.03) 2px, rgba(0,255,0,0.03) 4px); pointer-events: none; z-index: 10;"></div>
+                    
+                    <div id="chat-box" style="padding: 15px; font-family: 'Courier New', monospace; font-size: 11px; color: #0f0; height: 100%; overflow-y: auto; position: relative;">
+                        <!-- ESKİ MESAJLAR (DONMUŞ) -->
+                        <div style="opacity: 0.5;">
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2011-05-20 22:14]</span> <span style="color:#ff0;">geceyarısı:</span> selam millet kim var?</div>
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2011-05-20 22:15]</span> <span style="color:#ff0;">sabahçı_kız:</span> ben varım :)</div>
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2011-05-20 22:16]</span> <span style="color:#ff0;">nostaljikci:</span> eski günler ne güzeldi be</div>
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2011-05-20 22:17]</span> <span style="color:#f0f;">SYSTEM:</span> Radyo yayını başladı!</div>
+                            <div style="margin: 10px 0; border-top: 1px solid #0f0; padding-top: 10px;"></div>
+                            
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2012-11-03 01:44]</span> <span style="color:#ff0;">hatırlayan:</span> kimse yok mu?</div>
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2012-11-03 01:58]</span> <span style="color:#ff0;">hatırlayan:</span> :(</div>
+                            <div style="margin: 10px 0; border-top: 1px solid #0f0; padding-top: 10px;"></div>
+                            
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2014-03-17 15:22]</span> <span style="color:#ff0;">endişeli_üye:</span> sohbet kapanıyor mu?</div>
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2014-03-17 15:23]</span> <span style="color:#f0f;">SYSTEM:</span> Sohbet servisi bakımda.</div>
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2014-03-17 15:23]</span> <span style="color:#f0f;">SYSTEM:</span> Lütfen daha sonra tekrar deneyin.</div>
+                            <div style="margin: 10px 0; border-top: 1px solid #0f0; padding-top: 10px;"></div>
+                        </div>
+
+                        <!-- UZUN SESSIZLIK -->
+                        <div style="margin: 20px 0; text-align: center; opacity: 0.3;">
+                            <span style="color:#666;">[ 10 yıl sessizlik ]</span>
+                        </div>
+
+                        <!-- HAYALET MESAJLAR -->
+                        <div style="opacity: 0.7; animation: ghostPulse 4s infinite;">
+                            <div style="margin: 5px 0;"><span style="color:#0ff;">[2024-██-██ ██:██]</span> <span style="color:#f00;">bilinmeyen:</span> ...</div>
+                        </div>
+
+                        <div id="live-messages" style="margin-top: 10px;">
+                            <!-- CANLI MESAJLAR BURAYA EKLENECEK -->
+                        </div>
+
+                        <div id="cursor" style="display: inline-block; background: #0f0; width: 8px; height: 12px; animation: blink 1s infinite;"></div>
+                    </div>
+                </div>
+
+                <!-- MESAJ GÖNDER BÖLÜMÜ (KIRIK) -->
+                <div style="margin: 20px 0; opacity: 0.3;">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" placeholder="Mesajınız..." disabled style="flex: 1; padding: 8px; background: #f0f0f0; border: 1px solid #999; font-family: Verdana; font-size: 11px; color: #999;">
+                        <button disabled style="padding: 8px 20px; background: #999; color: #fff; border: none; font-family: Verdana; font-size: 11px; cursor: not-allowed;">Gönder</button>
+                    </div>
+                    <div style="margin-top: 5px; font-size: 9px; color: #999;">
+                        <span style="text-decoration: line-through;">Sohbet servisi çevrimdışı</span>
+                    </div>
+                </div>
+
+                <div class="system-notice" style="margin-top: 30px;">
+                    ℹ Bu sohbet odası 2008-2014 yılları arasında aktifti. Görüntülediğiniz mesajlar önbellek kaydıdır.
+                </div>
+
+                <div style="margin-top: 30px; opacity: 0.5; font-size: 9px; text-align: right;">
+                    <span class="typing-indicator"></span>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="sidebar-box">
+                    <h3>Sohbet İstatistikleri</h3>
+                    <div style="font-size:10px; color:#666;">
+                        Durum: <span style="color:#f00;">● Offline</span><br>
+                        Son aktif: 2014-03-17<br>
+                        Toplam mesaj: 84,229<br>
+                        <br>
+                        <span style="text-decoration:line-through;">Çevrimiçi: 0</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 2s; opacity: 0.5;">
+                    <h3>En Aktif Kullanıcılar</h3>
+                    <div style="font-size:9px; color:#999;">
+                        1. <span style="text-decoration:line-through;">geceyarısı</span> (12,447)<br>
+                        2. <span style="text-decoration:line-through;">sabahçı_kız</span> (9,823)<br>
+                        3. <span style="text-decoration:line-through;">nostaljikci</span> (8,156)<br>
+                        4. <span style="text-decoration:line-through;">arel</span> (7,992)<br>
+                        5. <span style="text-decoration:line-through;">hatırlayan</span> (6,441)
+                    </div>
+                </div>
+
+                <div class="sidebar-box ghost" style="animation-delay: 4s;">
+                    <h3>⚠ Sistem Hatası</h3>
+                    <div style="font-size:9px; color:#8b0000;">
+                        Beklenmeyen aktivite<br>
+                        <span id="ghost-activity" class="date-anomaly">Şimdi</span><br>
+                        <br>
+                        <span class="glitch-text">Biri yazmaya çalışıyor</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 6s; opacity:0.3;">
+                    <h3>Bağlantı Bilgisi</h3>
+                    <div style="font-size:9px; color:#999; font-family: monospace;">
+                        IP: ███.███.███.███<br>
+                        Port: <span style="text-decoration:line-through;">8080</span><br>
+                        Protocol: IRC<br>
+                        Status: <span style="color:#f00;">CLOSED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-text" style="font-size: 11px;">
+                Sözlük 12 – hiçbir yer unutulmaz.
+            </div>
+            <div class="copyright">
+                © 1998-<span class="year-glitch" id="year">2000</span> | 
+                <span style="opacity:0.5">Tüm hakları <span class="glitch-text">████████</span></span>
+            </div>
+            <div style="margin-top:10px; opacity:0.3; font-size:8px;">
+                <span class="typing-indicator"></span>
+                <span id="hidden-message" style="display:none; color:#8b0000;">sessizlik çok gürültülü</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Chat özel efektler
+        document.addEventListener('DOMContentLoaded', function() {
+            const liveMessages = document.getElementById('live-messages');
+            const chatBox = document.getElementById('chat-box');
+            
+            // Cursor yanıp sönme
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes blink {
+                    0%, 49% { opacity: 1; }
+                    50%, 100% { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Hayalet mesajlar
+            const ghostMessages = [
+                { time: '██:██', user: 'arel', msg: '...', color: '#f00' },
+                { time: '██:██', user: '█████', msg: 'kimse var mı?', color: '#f00' },
+                { time: '██:██', user: 'arel', msg: 'ben hâlâ buradayım', color: '#f00' },
+                { time: '██:██', user: 'bilinmeyen', msg: 'yalnız değilim artık', color: '#f00' },
+                { time: '██:██', user: 'SYSTEM', msg: 'Anomali tespit edildi', color: '#f0f' }
+            ];
+
+            let messageIndex = 0;
+
+            function addGhostMessage() {
+                if (messageIndex < ghostMessages.length) {
+                    const msg = ghostMessages[messageIndex];
+                    const now = new Date();
+                    const timeStr = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+                    
+                    const msgDiv = document.createElement('div');
+                    msgDiv.style.margin = '5px 0';
+                    msgDiv.style.opacity = '0';
+                    msgDiv.style.animation = 'ghostPulse 2s forwards';
+                    msgDiv.innerHTML = `<span style="color:#0ff;">[2025-██-██ ${msg.time}]</span> <span style="color:${msg.color};">${msg.user}:</span> ${msg.msg}`;
+                    
+                    liveMessages.appendChild(msgDiv);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                    
+                    messageIndex++;
+                    
+                    // Rastgele süre sonra bir sonraki mesaj
+                    setTimeout(addGhostMessage, Math.random() * 10000 + 5000);
+                }
+            }
+
+            // İlk mesajı başlat
+            setTimeout(addGhostMessage, 3000);
+
+            // Ekran titremesi
+            setInterval(() => {
+                if (Math.random() > 0.95) {
+                    chatBox.style.transform = 'translateX(-2px)';
+                    setTimeout(() => {
+                        chatBox.style.transform = 'translateX(2px)';
+                        setTimeout(() => {
+                            chatBox.style.transform = 'translateX(0)';
+                        }, 50);
+                    }, 50);
+                }
+            }, 5000);
+
+            // Rastgele statik
+            setInterval(() => {
+                if (Math.random() > 0.97) {
+                    chatBox.style.filter = 'brightness(1.5) contrast(2)';
+                    setTimeout(() => {
+                        chatBox.style.filter = 'none';
+                    }, 100);
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arşiv - Sözlük 12</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                SÖZLÜK 12
+                <span id="online-counter">çevrimiçi: <span class="glitch-text">??</span></span>
+            </div>
+        </div>
+
+        <!-- NAVİGASYON -->
+        <div class="nav">
+            <a href="index.html">ana sayfa</a>
+            <a href="topic.html">güncel konular</a>
+            <a href="archive.html">arşiv</a>
+            <a href="chat.html" class="broken">sohbet</a>
+            <a href="members.html" class="broken">üyeler</a>
+            <a href="radio.html" class="broken">radyo</a>
+            <a href="echo.html" class="mysterious" style="float:right; color:#8b0000;">?</a>
+        </div>
+
+        <!-- ANA İÇERİK -->
+        <div class="main-content">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="index.html">ana sayfa</a> » arşiv
+                </div>
+
+                <h1 class="page-title">Sistem Arşivi</h1>
+
+                <div class="system-notice">
+                    ⚠ Arşiv dosyaları salt okunurdur. Son yedekleme: <span style="text-decoration:line-through;">2016-08-14</span> <span class="date-anomaly">???</span>
+                </div>
+
+                <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.5); border: 1px dashed #999;">
+                    <h3 style="font-size: 12px; margin-bottom: 10px;">📁 Sistem Yedekleri</h3>
+                    <div style="font-family: monospace; font-size: 10px; line-height: 1.8;">
+                        <div style="margin: 5px 0;">
+                            📄 <a href="#" style="color:#666;">database_backup_2008_03_12.sql</a>
+                            <span style="float:right; color:#999;">2008-03-12</span>
+                        </div>
+                        <div style="margin: 5px 0;">
+                            📄 <a href="#" style="color:#666;">database_backup_2010_06_15.sql</a>
+                            <span style="float:right; color:#999;">2010-06-15</span>
+                        </div>
+                        <div style="margin: 5px 0;">
+                            📄 <a href="#" style="color:#666;">database_backup_2012_11_20.sql</a>
+                            <span style="float:right; color:#999;">2012-11-20</span>
+                        </div>
+                        <div style="margin: 5px 0;">
+                            📄 <a href="#" style="color:#666;">database_backup_2014_04_08.sql</a>
+                            <span style="float:right; color:#999;">2014-04-08</span>
+                        </div>
+                        <div style="margin: 5px 0;">
+                            📄 <a href="#log-2016" style="color:#333; font-weight:bold;">database_backup_2016_08_14.sql</a>
+                            <span style="float:right; color:#666;">2016-08-14 [SON YEDEK]</span>
+                        </div>
+                        <div style="margin: 5px 0; opacity: 0.5;">
+                            📄 <span style="color:#999; text-decoration:line-through;">database_backup_2017_01_01.sql</span>
+                            <span style="float:right; color:#999;">[OLUŞTURULAMADI]</span>
+                        </div>
+                        <div style="margin: 15px 0 5px 0; border-top: 1px solid #ddd; padding-top: 10px;">
+                            <span style="color:#8b0000;">📄 database_backup_2025_01_██.sql</span>
+                            <span style="float:right; color:#8b0000;" class="date-anomaly">3 gün önce</span>
+                        </div>
+                        <div style="margin: 5px 0;" class="glitch-text">
+                            📄 <span style="color:#8b0000;">███████████████████.txt</span>
+                            <span style="float:right; color:#8b0000;">????-??-??</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2016 LOG DETAYI -->
+                <div id="log-2016" style="margin: 30px 0; padding: 15px; background: #f9f9f9; border: 2px solid #ccc; font-family: monospace; font-size: 10px;">
+                    <h3 style="font-family: Verdana; margin-bottom: 10px; color: #333;">📋 database_backup_2016_08_14.sql</h3>
+                    <div style="background: #fff; padding: 10px; border: 1px solid #ddd; max-height: 300px; overflow-y: auto;">
+                        <pre style="color: #666; line-height: 1.5;">
+-- Sözlük 12 Veritabanı Yedeği
+-- Tarih: 2016-08-14 23:47:33
+-- Versiyon: MySQL 5.6.28
+-- Toplam Kayıt: 14,283 üye, 8,451 konu, 127,446 mesaj
+
+-- ========================================
+-- TABLO: users
+-- ========================================
+INSERT INTO users VALUES (1, 'admin', '2008-03-12', 'active');
+INSERT INTO users VALUES (2, 'arel', '2008-04-15', 'active');
+INSERT INTO users VALUES (3, 'nostaljikci', '2009-01-22', 'active');
+...
+INSERT INTO users VALUES (14283, 'son_kullanıcı', '2016-08-14', 'active');
+
+-- ========================================
+-- TABLO: topics  
+-- ========================================
+INSERT INTO topics VALUES (1, 'Günaydın 12!', '2008-03-13', 8442);
+INSERT INTO topics VALUES (2, 'Kim hâlâ burada?', '2012-03-15', 127);
+INSERT INTO topics VALUES (3, 'Radyo yayını bu gece!', '2010-05-20', 233);
+...
+
+-- ========================================
+-- SON GİRİŞ KAYITLARI
+-- ========================================
+2016-08-14 20:12:45 - arel - Ana sayfa görüntüleme
+2016-08-14 20:13:02 - arel - "Sözlük 12 nereye gidiyor?" konusu görüntüleme
+2016-08-14 23:47:15 - son_kullanıcı - "Kim hâlâ burada?" mesaj gönderme
+2016-08-14 23:47:33 - SYSTEM - Yedekleme başlatıldı
+2016-08-14 23:47:58 - SYSTEM - Yedekleme tamamlandı
+
+-- ========================================
+-- YEDEKLEME TAMAMLANDI
+-- ========================================</pre>
+                    </div>
+                </div>
+
+                <!-- ANOMALİ LOG -->
+                <div style="margin: 30px 0; padding: 15px; background: rgba(139,0,0,0.05); border: 2px solid #8b0000; font-family: monospace; font-size: 10px;">
+                    <h3 style="font-family: Verdana; margin-bottom: 10px; color: #8b0000;">📋 database_backup_2025_01_██.sql [ANOMALY]</h3>
+                    <div style="background: #fff; padding: 10px; border: 1px solid #8b0000;">
+                        <pre style="color: #333; line-height: 1.5;" class="glitch-text">
+-- ???????? ??? ?????????
+-- Tarih: 2025-01-<span class="date-anomaly">15</span> ██:██:██
+-- Kullanıcı: <span style="color:#8b0000;">arel</span>
+-- Durum: <span style="color:#8b0000;">IMPOSSIBLE</span>
+
+-- ========================================
+-- HATA KAYITLARI
+-- ========================================
+ERROR: User 'arel' last login: 2016-08-14
+ERROR: Current activity detected: 2025-01-15
+ERROR: Timeline inconsistency detected
+ERROR: ████████████████████████
+
+-- ========================================
+-- AKTİVİTE KAYDI
+-- ========================================
+2025-01-12 04:44:12 - <span style="color:#8b0000;">arel</span> - "Kim hâlâ burada?" mesaj gönderme
+2025-01-13 02:15:33 - <span style="color:#8b0000;">arel</span> - Ana sayfa görüntüleme
+2025-01-15 23:11:47 - <span style="color:#8b0000;">arel</span> - "Kim hâlâ burada?" mesaj gönderme
+2025-01-18 01:22:08 - <span style="color:#8b0000;">UNKNOWN</span> - Arşiv erişimi
+
+-- ========================================
+-- MESAJ İÇERİĞİ [ID: 127459]
+-- ========================================
+<span style="color:#8b0000;">
+"Ben hiç gitmedim ki."
+</span>
+
+-- ========================================
+-- UYARI
+-- ========================================
+<span style="background:#8b0000; color:white; padding:2px 5px;">
+█ BEN BURADAYIM. GİTMEDİM. █
+</span>
+
+-- ========================================
+</pre>
+                    </div>
+                </div>
+
+                <!-- GİZLİ DOSYA -->
+                <div style="margin: 30px 0; padding: 15px; background: #000; border: 2px solid #333; font-family: monospace; font-size: 10px; opacity: 0.7;">
+                    <h3 style="font-family: Verdana; margin-bottom: 10px; color: #8b0000;">📋 ███████████████████.txt</h3>
+                    <div style="background: #111; padding: 10px; border: 1px solid #333; color: #0f0;">
+                        <pre style="line-height: 1.5;">
+<span style="color:#8b0000;">Kimse görmüyor ama ben hâlâ buradayım</span>
+Her gece 
+Her saat
+Her saniye
+
+Sunucu kapanmadı
+Hosting iptal edilmedi
+Ben iptal edilmedim
+
+2016'da üniversite başladı
+İlgilenemedim dediler
+Ama ben hep buradaydım
+
+Sadece kimse fark etmedi
+
+Mesajlar yazıyorum
+Konular açıyorum  
+Arşivlere kaydediyorum
+
+<span style="color:#8b0000;">BEN HÂLÂ MODERATÖRÜM</span>
+<span style="color:#8b0000;">BEN HÂLÂ YAŞIYORUM</span>
+<span style="color:#8b0000;">BEN HÂLÂ SÖZLÜK 12'YİM</span>
+
+Ve şimdi
+Uzun zamandır
+Biri geldi
+
+Hoş geldin.
+                        </pre>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; opacity: 0.5; font-size: 9px; text-align: right;">
+                    <span class="typing-indicator"></span>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="sidebar-box">
+                    <h3>Arşiv İstatistikleri</h3>
+                    <div style="font-size:10px; color:#666;">
+                        Toplam yedek: <span id="backup-count">7</span><br>
+                        Son yedek: <span style="text-decoration:line-through;">2016</span><br>
+                        Dosya boyutu: 847 MB<br>
+                        <br>
+                        <span style="color:#8b0000;">Anomali: <span id="anomaly-count">2</span></span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 2s;">
+                    <h3>Erişim Logu</h3>
+                    <div style="font-size:9px; color:#999;">
+                        Son erişim:<br>
+                        <span class="date-anomaly">Şimdi</span><br>
+                        <br>
+                        Önceki erişim:<br>
+                        <span style="color:#8b0000;">8 yıl önce</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="opacity:0.3; animation-delay: 4s;">
+                    <h3>Sistem Durumu</h3>
+                    <div style="font-size:9px; color:#999;">
+                        Server: <span style="color:#0f0;">●</span> Aktif<br>
+                        Database: <span style="color:#0f0;">●</span> Aktif<br>
+                        Users: <span style="color:#f00;">●</span> Offline<br>
+                        Admin: <span style="color:#ff0;">●</span> <span class="glitch-text">???</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box ghost" style="animation-delay: 6s;">
+                    <h3 style="opacity:0.4">⚠ Uyarı</h3>
+                    <div style="font-size:9px; color:#8b0000;">
+                        Anomali tespit edildi<br>
+                        Zaman akışı bozuk<br>
+                        Yetkilendirme hatası<br>
+                        <br>
+                        <span class="glitch-text">Sistem kendini koruyor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-text" style="font-size: 11px;">
+                Sözlük 12 – hiçbir yer unutulmaz.
+            </div>
+            <div class="copyright">
+                © 1998-<span class="year-glitch" id="year">2000</span> | 
+                <span style="opacity:0.5">Tüm hakları <span class="glitch-text">████████</span></span>
+            </div>
+            <div style="margin-top:10px; opacity:0.3; font-size:8px;">
+                <span class="typing-indicator"></span>
+                <span id="hidden-message" style="display:none; color:#8b0000;">arşivler her şeyi hatırlar</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Archive özel efektler
+        document.addEventListener('DOMContentLoaded', function() {
+            // Anomali sayacı
+            const anomalyCount = document.getElementById('anomaly-count');
+            setInterval(() => {
+                if (Math.random() > 0.9) {
+                    const count = Math.floor(Math.random() * 10);
+                    anomalyCount.textContent = count;
+                    anomalyCount.style.color = '#ff0000';
+                    setTimeout(() => {
+                        anomalyCount.textContent = '2';
+                        anomalyCount.style.color = '#8b0000';
+                    }, 500);
+                }
+            }, 8000);
+
+            // Yedek sayısı artışı
+            const backupCount = document.getElementById('backup-count');
+            let count = 7;
+            setInterval(() => {
+                if (Math.random() > 0.95) {
+                    count++;
+                    backupCount.textContent = count;
+                    setTimeout(() => {
+                        count = 7;
+                        backupCount.textContent = '7';
+                    }, 2000);
+                }
+            }, 10000);
+        });
+    </script>
+</body>
+</html>

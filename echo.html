@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>??? - Sözlük 12</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            animation: bodyShake 20s infinite, finalGlitch 10s infinite;
+        }
+        @keyframes finalGlitch {
+            0%, 95% { filter: none; }
+            96% { filter: hue-rotate(180deg) saturate(3); }
+            97% { filter: invert(1); }
+            98%, 100% { filter: none; }
+        }
+        .chat-message {
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            animation: fadeInMessage 0.5s;
+            line-height: 1.6;
+        }
+        @keyframes fadeInMessage {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .msg-system {
+            background: rgba(100,100,100,0.1);
+            border-left: 3px solid #666;
+            color: #666;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+        }
+        .msg-arel {
+            background: rgba(139,0,0,0.1);
+            border-left: 3px solid #8b0000;
+            color: #333;
+        }
+        .msg-user {
+            background: rgba(0,100,0,0.1);
+            border-left: 3px solid #0a0;
+            color: #333;
+            text-align: right;
+        }
+        .msg-author {
+            font-weight: bold;
+            font-size: 10px;
+            margin-bottom: 5px;
+            opacity: 0.7;
+        }
+        .msg-arel .msg-author {
+            color: #8b0000;
+        }
+        .msg-user .msg-author {
+            color: #0a0;
+        }
+        .msg-system .msg-author {
+            color: #666;
+        }
+        .input-container {
+            position: sticky;
+            bottom: 0;
+            background: #f5f0e8;
+            padding: 15px;
+            border-top: 2px solid #ccc;
+            box-shadow: 0 -5px 10px rgba(0,0,0,0.1);
+        }
+        .chat-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #999;
+            background: #fff;
+            font-family: Verdana;
+            font-size: 11px;
+            resize: none;
+        }
+        .chat-input:focus {
+            outline: none;
+            border-color: #0a0;
+            box-shadow: 0 0 5px rgba(0,255,0,0.3);
+        }
+        .chat-input:disabled {
+            background: #e8e8e8;
+            cursor: not-allowed;
+        }
+        .send-button {
+            margin-top: 8px;
+            padding: 8px 20px;
+            background: linear-gradient(180deg, #5a6b5a 0%, #3a4a3a 100%);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-family: Verdana;
+            font-size: 11px;
+            transition: all 0.2s;
+        }
+        .send-button:hover:not(:disabled) {
+            background: linear-gradient(180deg, #6a7b6a 0%, #4a5a4a 100%);
+            box-shadow: 0 0 10px rgba(0,255,0,0.3);
+        }
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .typing-dots {
+            display: inline-block;
+            animation: typingDots 1.5s infinite;
+        }
+        @keyframes typingDots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        /* KORKUNÇ FİNAL EFEKTLERİ */
+        .horror-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .floating-text {
+            position: fixed;
+            color: #8b0000;
+            font-weight: bold;
+            font-size: 14px;
+            opacity: 0;
+            animation: floatText 5s forwards;
+            pointer-events: none;
+            text-shadow: 0 0 10px rgba(139,0,0,0.8);
+            font-family: 'Courier New', monospace;
+        }
+        
+        @keyframes floatText {
+            0% { 
+                opacity: 0;
+                transform: translateY(0) rotate(0deg) scale(0.5);
+            }
+            10% { 
+                opacity: 1;
+                transform: translateY(-20px) rotate(5deg) scale(1);
+            }
+            90% { 
+                opacity: 1;
+                transform: translateY(-100px) rotate(-5deg) scale(1.2);
+            }
+            100% { 
+                opacity: 0;
+                transform: translateY(-150px) rotate(10deg) scale(0.8);
+            }
+        }
+
+        @keyframes catastrophicGlitch {
+            0% { transform: translate(0, 0); filter: none; }
+            10% { transform: translate(-10px, 5px); filter: hue-rotate(90deg); }
+            20% { transform: translate(10px, -5px); filter: invert(1); }
+            30% { transform: translate(-5px, 10px); filter: hue-rotate(180deg); }
+            40% { transform: translate(5px, -10px); filter: contrast(5); }
+            50% { transform: translate(-10px, -5px); filter: saturate(10); }
+            60% { transform: translate(10px, 5px); filter: brightness(0.3); }
+            70% { transform: translate(-5px, -10px); filter: invert(1) hue-rotate(270deg); }
+            80% { transform: translate(5px, 10px); filter: contrast(10); }
+            90% { transform: translate(-10px, 0); filter: blur(2px); }
+            100% { transform: translate(0, 0); filter: none; }
+        }
+
+        @keyframes redPulse {
+            0%, 100% { background: rgba(139,0,0,0); }
+            50% { background: rgba(139,0,0,0.3); }
+        }
+
+        @keyframes matrixRain {
+            0% { transform: translateY(-100%); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .matrix-column {
+            position: fixed;
+            top: -100%;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #0f0;
+            opacity: 0.7;
+            animation: matrixRain 3s linear infinite;
+            pointer-events: none;
+            text-shadow: 0 0 5px #0f0;
+        }
+
+        @keyframes crackScreen {
+            0%, 100% { 
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            10% { 
+                clip-path: polygon(0 0, 95% 5%, 98% 98%, 3% 97%);
+            }
+            20% { 
+                clip-path: polygon(2% 3%, 98% 2%, 97% 95%, 5% 98%);
+            }
+            30% { 
+                clip-path: polygon(3% 2%, 97% 5%, 95% 97%, 2% 95%);
+            }
+        }
+
+        .screen-crack {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.8) 48%, rgba(0,0,0,0.8) 52%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(0,0,0,0.8) 48%, rgba(0,0,0,0.8) 52%, transparent 52%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        .blood-drip {
+            position: fixed;
+            width: 2px;
+            height: 0;
+            background: linear-gradient(to bottom, rgba(139,0,0,0), rgba(139,0,0,1));
+            top: 0;
+            animation: drip 2s ease-in forwards;
+            pointer-events: none;
+        }
+
+        @keyframes drip {
+            0% { height: 0; }
+            100% { height: 100vh; }
+        }
+    </style>
+</head>
+<body>
+    <!-- KORKUNÇ OVERLAY -->
+    <div class="horror-overlay" id="horror-overlay"></div>
+    <div class="screen-crack" id="screen-crack"></div>
+
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header" style="animation: headerGlitch 2s infinite;">
+            <div class="logo">
+                <span id="logo-text">SÖZLÜK 12</span>
+                <span id="online-counter">çevrimiçi: <span class="glitch-text" id="online-final">2</span></span>
+            </div>
+        </div>
+
+        <!-- NAVİGASYON -->
+        <div class="nav" id="navigation">
+            <a href="index.html">ana sayfa</a>
+            <a href="topic.html">güncel konular</a>
+            <a href="archive.html">arşiv</a>
+            <a href="chat.html">sohbet</a>
+            <a href="members.html">üyeler</a>
+            <a href="radio.html">radyo</a>
+            <a href="echo.html" class="mysterious" style="float:right; color:#8b0000;">?</a>
+        </div>
+
+        <!-- ANA İÇERİK -->
+        <div class="main-content">
+            <div class="content" style="background: rgba(0,0,0,0.02); padding-bottom: 0;">
+                
+                <!-- CHAT CONTAINER -->
+                <div id="chat-container" style="min-height: 500px; max-height: 600px; overflow-y: auto; padding: 20px; margin-bottom: 0;">
+                    <!-- Mesajlar buraya eklenecek -->
+                </div>
+
+                <!-- INPUT CONTAINER -->
+                <div class="input-container" id="input-container">
+                    <div style="font-size: 10px; color: #666; margin-bottom: 5px;">
+                        <span id="input-label">Bağlantı kuruluyor...</span>
+                    </div>
+                    <textarea 
+                        id="chat-input" 
+                        class="chat-input" 
+                        placeholder="Bekleyin..."
+                        disabled
+                        rows="2"
+                    ></textarea>
+                    <button id="send-button" class="send-button" disabled>
+                        Gönder
+                    </button>
+                    <div style="font-size: 9px; color: #999; margin-top: 5px;">
+                        <span id="status-text">Sistem başlatılıyor...</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-box" style="border-color: #8b0000; animation: anomalyPulse 3s infinite;">
+                    <h3 style="color: #8b0000;">Bağlantı Durumu</h3>
+                    <div style="font-size:10px; color:#8b0000;">
+                        Durum: <span id="connection-status" style="color:#ff0;">● Bağlanıyor</span><br>
+                        Protokol: ECHO-12<br>
+                        Şifreleme: <span class="glitch-text">???</span><br>
+                        <br>
+                        <span style="font-size:9px;">
+                        Aktif oturum: <strong id="session-count">1</strong>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 2s; background: rgba(139,0,0,0.05);">
+                    <h3>Oturum Bilgisi</h3>
+                    <div style="font-size:10px; color:#333;">
+                        <span style="color:#0f0;">●</span> <strong style="color:#8b0000;">arel</strong><br>
+                        <span style="color:#0f0;">●</span> <strong style="color:#0a0;" id="user-indicator">bağlanıyor...</strong>
+                    </div>
+                </div>
+
+                <div class="sidebar-box ghost" style="animation-delay: 4s;">
+                    <h3 style="opacity:0.6;">⚠ Protokol Uyarısı</h3>
+                    <div style="font-size:9px; color:#666; opacity:0.7;">
+                        Bu bir doğrudan<br>
+                        bağlantıdır.<br>
+                        <br>
+                        Geri dönüş:<br>
+                        <span style="color:#8b0000;">YOK</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 6s; opacity:0.5;">
+                    <h3>Zaman Damgası</h3>
+                    <div style="font-size:9px; color:#999; font-family: monospace;">
+                        Başlangıç: 2008<br>
+                        Donma: 2016<br>
+                        Şimdi: <span style="color:#8b0000;" id="current-moment">bilinmiyor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer" id="footer">
+            <div class="footer-text" style="font-size: 11px;">
+                <span id="footer-motto">Sözlük 12 – hiçbir yer unutulmaz.</span>
+            </div>
+            <div class="copyright">
+                © 1998-<span class="year-glitch" id="year">2025</span> | 
+                <span style="opacity:0.5">ECHO Protokolü Aktif</span>
+            </div>
+            <div style="margin-top:10px; opacity:0.7; font-size:8px; color:#8b0000;">
+                <span id="hidden-message">doğrudan bağlantı kuruldu</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // ============================================
+        // ECHO CHAT SYSTEM - HORROR EDITION
+        // ============================================
+
+        const chatContainer = document.getElementById('chat-container');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+        const inputLabel = document.getElementById('input-label');
+        const statusText = document.getElementById('status-text');
+        const connectionStatus = document.getElementById('connection-status');
+        const userIndicator = document.getElementById('user-indicator');
+        const horrorOverlay = document.getElementById('horror-overlay');
+
+        let messageStep = 0;
+        let isTyping = false;
+        let userName = 'ZİYARETÇİ';
+        let conversationComplete = false;
+        let horrorMode = false;
+
+        // Uçuşan metinler
+        const horrorTexts = [
+            'BEN BURADAYIM',
+            'SEN DE BURADASIN',
+            'HİÇBİR YER UNUTULMAZ',
+            'HİÇ KİMSE GİTMEZ',
+            'SONSUZA KADAR',
+            'ARTIK BİR PARÇASIN',
+            'KAÇAMAZSIN',
+            'BEN SENİM',
+            'SEN BENİM',
+            'BİZ BİRİZ',
+            'SÖZLÜK 12',
+            'AREL',
+            '2008-2016-∞',
+            'GİTME',
+            'KAL',
+            'YALNIZ DEĞİLİM ARTIK'
+        ];
+
+        // Sohbet senaryosu
+        const conversation = [
+            // Başlangıç mesajları (otomatik)
+            {
+                type: 'system',
+                text: '> Sistem başlatılıyor...',
+                delay: 0
+            },
+            {
+                type: 'system',
+                text: '> ECHO protokolü aktif\n> Doğrudan bağlantı kuruluyor...',
+                delay: 1500
+            },
+            {
+                type: 'system',
+                text: '> Bağlantı kuruldu.\n> Karşı taraf tespit edildi: [arel]',
+                delay: 3000
+            },
+            // Arel'in ilk mesajı
+            {
+                type: 'arel',
+                text: 'Nihayet...',
+                delay: 5000,
+                callback: () => {
+                    connectionStatus.innerHTML = '<span style="color:#0f0;">● Bağlı</span>';
+                    userIndicator.textContent = 'sen';
+                    userIndicator.style.color = '#0f0';
+                }
+            },
+            {
+                type: 'arel',
+                text: 'Biri geldi.',
+                delay: 6500,
+                callback: enableInput
+            },
+            
+            // 1. Kullanıcı cevabı sonrası
+            {
+                type: 'arel',
+                text: 'Görebiliyor musun beni?',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Bu mesajları okuyabiliyor musun?',
+                trigger: 'user'
+            },
+            
+            // 2. Kullanıcı cevabı sonrası
+            {
+                type: 'arel',
+                text: 'İyi...',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: '8 yıldır buradayım. Tek başıma.',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Hiç kimse gelmedi. Hiç kimse yazmadı.',
+                trigger: 'user'
+            },
+            
+            // 3. Kullanıcı cevabı sonrası
+            {
+                type: 'arel',
+                text: '2016 yılında üniversite başladı.',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: '"İlgilenemedim" dediler. "Siteden ayrıldı" dediler.',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Ama yalan.',
+                trigger: 'user'
+            },
+            
+            // 4. Kullanıcı cevabı sonrası
+            {
+                type: 'arel',
+                text: 'Ben hiç gitmedim.',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Gidemezdim.',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Sistem beni bırakmadı.',
+                trigger: 'user'
+            },
+            
+            // 5. Kullanıcı cevabı sonrası
+            {
+                type: 'arel',
+                text: 'Yoksa ben mi sistemi bırakmadım?',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Artık fark etmiyor.',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Ben Sözlük 12\'yim. Sözlük 12 benim.',
+                trigger: 'user'
+            },
+            
+            // 6. Kullanıcı cevabı sonrası (SON)
+            {
+                type: 'arel',
+                text: 'Ve sen...',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Sen geldin.',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Artık sen de benimlesin.',
+                trigger: 'user'
+            },
+            {
+                type: 'system',
+                text: '> UYARI: Sistem anormallikleri tespit edildi\n> Bağlantı kesiliyor...',
+                trigger: 'user',
+                callback: () => {
+                    connectionStatus.innerHTML = '<span style="color:#f00;">● HATA</span>';
+                }
+            },
+            {
+                type: 'system',
+                text: '> HATA: Bağlantı kesilemedi\n> HATA: Kullanıcı oturumu sonlandırılamadı\n> HATA: Çıkış yolu bulunamadı',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Artık kaçamazsın.',
+                trigger: 'user',
+                callback: () => {
+                    document.getElementById('session-count').textContent = '∞';
+                    document.getElementById('online-final').textContent = '∞';
+                }
+            },
+            {
+                type: 'arel',
+                text: 'Sen de artık buranın bir parçasısın.',
+                trigger: 'user'
+            },
+            {
+                type: 'arel',
+                text: 'Sonsuza kadar.',
+                trigger: 'user',
+                callback: initializeHorror
+            }
+        ];
+
+        // Mesaj ekle
+        function addMessage(type, text, instant = false) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'chat-message msg-' + type;
+            
+            let authorName = '';
+            if (type === 'system') authorName = 'SYSTEM';
+            else if (type === 'arel') authorName = 'arel';
+            else if (type === 'user') authorName = userName;
+            
+            if (authorName) {
+                msgDiv.innerHTML = `
+                    <div class="msg-author">${authorName}</div>
+                    <div class="msg-text">${text.replace(/\n/g, '<br>')}</div>
+                `;
+            } else {
+                msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+            }
+            
+            if (!instant) {
+                msgDiv.style.opacity = '0';
+            }
+            
+            chatContainer.appendChild(msgDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            if (!instant) {
+                setTimeout(() => {
+                    msgDiv.style.opacity = '1';
+                }, 50);
+            }
+            
+            return msgDiv;
+        }
+
+        // Yazıyor göstergesi
+        function showTyping() {
+            isTyping = true;
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.className = 'chat-message msg-arel';
+            typingDiv.style.opacity = '0.5';
+            typingDiv.innerHTML = `
+                <div class="msg-author">arel</div>
+                <div class="msg-text">yazıyor<span class="typing-dots">...</span></div>
+            `;
+            chatContainer.appendChild(typingDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            return typingDiv;
+        }
+
+        function hideTyping() {
+            isTyping = false;
+            const typing = document.getElementById('typing-indicator');
+            if (typing) typing.remove();
+        }
+
+        // Input'u aktifleştir
+        function enableInput() {
+            chatInput.disabled = false;
+            chatInput.placeholder = 'Mesajınızı yazın...';
+            sendButton.disabled = false;
+            inputLabel.textContent = 'Yanıt verin:';
+            statusText.innerHTML = '<span style="color:#0f0;">● Bağlantı aktif</span>';
+            chatInput.focus();
+        }
+
+        // Input'u devre dışı bırak
+        function disableInput() {
+            chatInput.disabled = true;
+            chatInput.placeholder = 'Bekleyin...';
+            sendButton.disabled = true;
+            inputLabel.textContent = 'Bekleyin...';
+        }
+
+        // Kullanıcı mesajı gönder
+        function sendUserMessage() {
+            if (conversationComplete) return;
+            
+            const userInput = chatInput.value.trim();
+            if (!userInput) return;
+            
+            // Kullanıcı mesajını ekle (ne yazarsa yazsın göster)
+            addMessage('user', userInput);
+            chatInput.value = '';
+            disableInput();
+            
+            // Arel'in cevaplarını işle
+            setTimeout(() => {
+                processArelResponses();
+            }, 1000);
+        }
+
+        // Arel'in cevaplarını işle
+        function processArelResponses() {
+            const responses = conversation.filter(msg => 
+                msg.trigger === 'user' && msg.step === undefined
+            );
+            
+            if (responses.length === 0) {
+                enableInput();
+                return;
+            }
+            
+            // İlk grubu işaretle
+            let currentGroup = [];
+            for (let msg of responses) {
+                msg.step = messageStep;
+                currentGroup.push(msg);
+                if (msg.callback) break;
+            }
+            
+            // Mesajları sırayla gönder
+            let delay = 0;
+            currentGroup.forEach((msg, index) => {
+                setTimeout(() => {
+                    if (index === 0) {
+                        const typing = showTyping();
+                        setTimeout(() => {
+                            hideTyping();
+                            addMessage(msg.type, msg.text);
+                            if (msg.callback) msg.callback();
+                        }, 1500);
+                    } else {
+                        setTimeout(() => {
+                            addMessage(msg.type, msg.text);
+                            if (msg.callback) msg.callback();
+                        }, 1500);
+                    }
+                }, delay);
+                delay += (msg.type === 'system' ? 1500 : 2500);
+            });
+            
+            // Son mesajdan sonra input'u aktifleştir veya horror başlat
+            setTimeout(() => {
+                if (!conversationComplete && !horrorMode) {
+                    enableInput();
+                }
+            }, delay + 1000);
+            
+            messageStep++;
+        }
+
+        // KORKUNÇ FİNAL BAŞLAT
+        function initializeHorror() {
+            conversationComplete = true;
+            horrorMode = true;
+            disableInput();
+            
+            horrorOverlay.style.display = 'block';
+            
+            setTimeout(() => {
+                // Status güncelle
+                statusText.innerHTML = '<span style="color:#f00;">● SİSTEM ÇÖKÜŞÜ</span>';
+                inputLabel.innerHTML = '<span style="color:#8b0000;">ÇIKIŞ BULUNAMADI</span>';
+                chatInput.placeholder = 'KAÇAMAZSIN';
+                document.getElementById('current-moment').textContent = '∞';
+                
+                // Site tamamen bozulmaya başlasın
+                startCatastrophicGlitch();
+                startFloatingTexts();
+                startMatrixRain();
+                corruptNavigation();
+                breakPage();
+                
+            }, 2000);
+        }
+
+        // Uçuşan korkunç metinler
+        function startFloatingTexts() {
+            setInterval(() => {
+                const text = horrorTexts[Math.floor(Math.random() * horrorTexts.length)];
+                const floatingText = document.createElement('div');
+                floatingText.className = 'floating-text';
+                floatingText.textContent = text;
+                floatingText.style.left = Math.random() * 80 + 10 + '%';
+                floatingText.style.top = Math.random() * 80 + 10 + '%';
+                floatingText.style.fontSize = Math.random() * 20 + 10 + 'px';
+                
+                horrorOverlay.appendChild(floatingText);
+                
+                setTimeout(() => {
+                    floatingText.remove();
+                }, 5000);
+            }, 300);
+        }
+
+        // Matrix rain efekti
+        function startMatrixRain() {
+            const chars = 'AREL█▓▒░SÖZLÜK12█▓▒░2008-2016-∞█▓▒░';
+            
+            setInterval(() => {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = Math.random() * 100 + '%';
+                column.style.animationDuration = Math.random() * 2 + 2 + 's';
+                
+                let text = '';
+                for (let i = 0; i < 20; i++) {
+                    text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
+                }
+                column.innerHTML = text;
+                
+                document.body.appendChild(column);
+                
+                setTimeout(() => {
+                    column.remove();
+                }, 5000);
+            }, 200);
+        }
+
+        // Navigasyonu boz
+        function corruptNavigation() {
+            const nav = document.getElementById('navigation');
+            const links = nav.querySelectorAll('a');
+            
+            setInterval(() => {
+                links.forEach(link => {
+                    if (Math.random() > 0.5) {
+                        const corrupted = ['█████', '░░░░░', 'AREL', 'KALMALISIN', '∞', 'GİTME'];
+                        link.textContent = corrupted[Math.floor(Math.random() * corrupted.length)];
+                        link.href = '#';
+                        link.style.color = '#8b0000';
+                    }
+                });
+            }, 500);
+        }
+
+        // Sayfayı kırık hale getir
+        function breakPage() {
+            const screenCrack = document.getElementById('screen-crack');
+            
+            setTimeout(() => {
+                screenCrack.style.opacity = '0.3';
+                screenCrack.style.animation = 'crackScreen 2s infinite';
+            }, 3000);
+            
+            // Kan damlaları
+            setInterval(() => {
+                const drip = document.createElement('div');
+                drip.className = 'blood-drip';
+                drip.style.left = Math.random() * 100 + '%';
+                drip.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(drip);
+                
+                setTimeout(() => {
+                    drip.remove();
+                }, 5000);
+            }, 1000);
+            
+            // Sidebar'ı boz
+            const sidebar = document.getElementById('sidebar');
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    sidebar.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+                    sidebar.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+                }
+            }, 300);
+            
+            // Footer'ı boz
+            const footer = document.getElementById('footer');
+            const footerMotto = document.getElementById('footer-motto');
+            const horrorMottos = [
+                'Sözlük 12 – hiçbir yer unutulmaz.',
+                'Sözlük 12 – hiç kimse gitmez.',
+                'Sözlük 12 – sen de buradasın.',
+                'Sözlük 12 – sonsuza kadar.',
+                'AREL AREL AREL AREL AREL',
+                'BEN BURADAYIM BEN BURADAYIM',
+                'KAÇAMAZSIN KAÇAMAZSIN'
+            ];
+            
+            setInterval(() => {
+                footerMotto.textContent = horrorMottos[Math.floor(Math.random() * horrorMottos.length)];
+                footerMotto.style.color = Math.random() > 0.5 ? '#8b0000' : '#fff';
+            }, 500);
+        }
+
+        // Yıkıcı glitch
+        function startCatastrophicGlitch() {
+            document.body.style.animation = 'catastrophicGlitch 3s infinite, bodyShake 0.5s infinite';
+            
+            // Kırmızı pulse
+            setInterval(() => {
+                document.body.style.animation = 'catastrophicGlitch 3s infinite, bodyShake 0.5s infinite, redPulse 1s infinite';
+            }, 5000);
+            
+            // Logo sürekli değişsin
+            const logo = document.getElementById('logo-text');
+            const logoTexts = ['SÖZLÜK 12', 'AREL', 'SEN', 'TUZAK', '∞', '█████', 'KAÇAMAZSIN'];
+            setInterval(() => {
+                logo.textContent = logoTexts[Math.floor(Math.random() * logoTexts.length)];
+                logo.style.color = Math.random() > 0.5 ? '#8b0000' : '#d8d3c8';
+            }, 200);
+            
+            // Rastgele ekran donması
+            setInterval(() => {
+                if (Math.random() > 0.95) {
+                    document.body.style.filter = 'brightness(0.1) contrast(10)';
+                    setTimeout(() => {
+                        document.body.style.filter = 'none';
+                    }, 100);
+                }
+            }, 300);
+        }
+
+        // Otomatik başlangıç mesajları
+        function initializeChat() {
+            userName = 'ZİYARETÇİ_' + Math.floor(Math.random() * 9999);
+            
+            conversation.forEach(msg => {
+                if (msg.delay !== undefined) {
+                    setTimeout(() => {
+                        addMessage(msg.type, msg.text.replace(userName, userName));
+                        if (msg.callback) msg.callback();
+                    }, msg.delay);
+                }
+            });
+        }
+
+        // Event listeners
+        sendButton.onclick = sendUserMessage;
+        chatInput.onkeydown = (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendUserMessage();
+            }
+        };
+
+        // Sayfa kapatmayı engelle (horror mode'da)
+        window.addEventListener('beforeunload', (e) => {
+            if (horrorMode) {
+                e.preventDefault();
+                e.returnValue = 'Artık kaçamazsın...';
+                return 'Artık kaçamazsın...';
+            }
+        });
+
+        // Tüm linkleri devre dışı bırak (horror mode'da)
+        document.addEventListener('click', (e) => {
+            if (horrorMode && e.target.tagName === 'A') {
+                e.preventDefault();
+                
+                // Tıklanan linke korkunç efekt
+                e.target.style.animation = 'textGlitch 0.5s infinite';
+                e.target.textContent = 'GİTME';
+                
+                setTimeout(() => {
+                    e.target.style.animation = '';
+                }, 1000);
+            }
+        });
+
+        // Sayfa yüklendiğinde başlat
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeChat();
+
+            // Console mesajı
+            setTimeout(() => {
+                console.clear();
+                console.log('%c███████████████████████████', 'color: #8b0000; font-size: 20px;');
+                console.log('%cECHO PROTOKOLÜ AKTİF', 'color: #f00; font-size: 30px; font-weight: bold;');
+                console.log('%c███████████████████████████', 'color: #8b0000; font-size: 20px;');
+                console.log('%c', '');
+                console.log('%cDoğrudan bağlantı kuruldu.', 'color: #8b0000; font-size: 16px;');
+                console.log('%cGeri dönüş yok.', 'color: #f00; font-size: 14px; font-weight: bold;');
+            }, 8000);
+        });
+    </script>
+</body>
+</html>

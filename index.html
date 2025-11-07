@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sözlük 12 - Ana Sayfa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                SÖZLÜK 12
+                <span id="online-counter">çevrimiçi: <span class="glitch-text">??</span></span>
+            </div>
+        </div>
+
+        <!-- NAVİGASYON -->
+        <div class="nav">
+            <a href="index.html">ana sayfa</a>
+            <a href="topic.html">güncel konular</a>
+            <a href="archive.html">arşiv</a>
+            <a href="chat.html">sohbet</a>
+            <a href="members.html">üyeler</a>
+            <a href="radio.html">radyo</a>
+            <a href="echo.html" class="mysterious" style="float:right; color:#8b0000;">?</a>
+        </div>
+
+        <!-- ANA İÇERİK -->
+        <div class="main-content">
+            <div class="content">
+                <div class="system-notice">
+                    Sistem bildirimi: Son güncelleme <span class="date-anomaly">bilinmiyor</span> | 
+                    Server uptime: <span id="uptime" style="color:#0f0;">6847 gün</span>
+                </div>
+
+                <h1 class="page-title">Hoş Geldiniz</h1>
+
+                <div style="margin-bottom: 30px; font-size: 11px; color: #666; line-height: 1.8;">
+                    <strong>Sözlük 12</strong>'ye hoş geldiniz. Burası <strong>2008</strong> yılından beri açık olan bir topluluk alanıdır.<br>
+                    <span style="text-decoration: line-through;">14,283 üye</span> 
+                    <span class="glitch-text">??? üye</span> ve <strong id="topic-total">8,451</strong> konu ile 
+                    <span style="opacity:0.5; text-decoration:line-through;">Türkiye'nin en büyük...</span>
+                    <br><br>
+                    <span style="color:#999; font-size:10px;">
+                        Son yedekleme: <span style="text-decoration:line-through;">2016-08-14 23:47</span> | 
+                        Durum: <span style="color:#0f0;">● Aktif</span> | 
+                        Moderatör: <span style="color:#8b0000;">arel</span>
+                    </span>
+                </div>
+
+                <!-- HIZLI ERİŞİM PANELİ -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0;">
+                    <!-- RADYO KUTUSU -->
+                    <a href="radio.html" style="text-decoration: none;">
+                        <div style="background: linear-gradient(135deg, rgba(0,255,0,0.1) 0%, rgba(0,100,0,0.05) 100%); border: 2px solid #0a0; padding: 15px; transition: all 0.3s; cursor: pointer;">
+                            <div style="font-size: 14px; font-weight: bold; color: #0a0; margin-bottom: 5px;">
+                                📻 Sözlük 12 Radyo
+                            </div>
+                            <div style="font-size: 10px; color: #666;">
+                                <span style="color:#0f0;">● CANLI</span> Yayın şimdi açık!<br>
+                                <span style="opacity:0.7">Son yayın: <span style="text-decoration:line-through;">2012</span> <span style="color:#0f0;">ŞİMDİ</span></span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- SOHBET KUTUSU -->
+                    <a href="chat.html" style="text-decoration: none;">
+                        <div style="background: rgba(255,255,0,0.05); border: 2px solid #999; padding: 15px; transition: all 0.3s; cursor: pointer; opacity: 0.6;">
+                            <div style="font-size: 14px; font-weight: bold; color: #666; margin-bottom: 5px;">
+                                💬 Anlık Sohbet
+                            </div>
+                            <div style="font-size: 10px; color: #999;">
+                                <span style="color:#f00;">● OFFLINE</span> Servis kapalı<br>
+                                <span style="opacity:0.7">Son mesaj: 2014-03-17</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ARŞİV KUTUSU -->
+                    <a href="archive.html" style="text-decoration: none;">
+                        <div style="background: rgba(139,0,0,0.05); border: 2px solid #8b0000; padding: 15px; transition: all 0.3s; cursor: pointer;">
+                            <div style="font-size: 14px; font-weight: bold; color: #8b0000; margin-bottom: 5px;">
+                                📁 Sistem Arşivi
+                            </div>
+                            <div style="font-size: 10px; color: #666;">
+                                <span style="color:#8b0000;">⚠ ANOMALY</span> Beklenmeyen veri<br>
+                                <span style="opacity:0.7">Yedekler: 2008-<span class="date-anomaly">2025</span></span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ÜYELER KUTUSU -->
+                    <a href="members.html" style="text-decoration: none;">
+                        <div style="background: rgba(100,100,100,0.05); border: 2px solid #666; padding: 15px; transition: all 0.3s; cursor: pointer; opacity: 0.7;">
+                            <div style="font-size: 14px; font-weight: bold; color: #666; margin-bottom: 5px;">
+                                👥 Üye Listesi
+                            </div>
+                            <div style="font-size: 10px; color: #999;">
+                                Toplam: <span style="text-decoration:line-through;">14,283</span><br>
+                                <span style="opacity:0.7">Çevrimiçi: <span style="color:#0f0;">1</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <h2 style="font-size: 14px; margin: 30px 0 15px 0; color: #3a4a3a; border-bottom: 2px solid #ccc; padding-bottom: 8px;">
+                    📌 Aktif Konular
+                </h2>
+
+                <table class="forum-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">Konu Başlığı</th>
+                            <th>Yazar</th>
+                            <th>Son Mesaj</th>
+                            <th>Cevap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: rgba(139,0,0,0.05);">
+                            <td>
+                                <a href="topic.html" class="topic-title" style="color:#8b0000; font-weight:bold;">
+                                    ⚠ Kim hâlâ burada?
+                                </a>
+                                <div style="font-size:9px; color:#666; margin-top:3px;">
+                                    Beklenmeyen aktivite tespit edildi
+                                </div>
+                            </td>
+                            <td><span style="text-decoration:line-through">nostaljikci</span></td>
+                            <td class="date-anomaly">3 gün önce</td>
+                            <td><strong style="color:#8b0000;">127</strong></td>
+                        </tr>
+                        <tr style="opacity:0.8;">
+                            <td>
+                                <a href="#" class="topic-title">Günaydın 12! [Arşiv]</a>
+                                <div style="font-size:9px; color:#999; margin-top:3px;">
+                                    Her sabah açılan efsane başlık
+                                </div>
+                            </td>
+                            <td><span style="opacity:0.5">sabahçı_kız</span></td>
+                            <td class="date-old">2016-08-12</td>
+                            <td>8,442</td>
+                        </tr>
+                        <tr style="background: rgba(0,255,0,0.05);">
+                            <td>
+                                <a href="radio.html" class="topic-title" style="color:#0a0;">
+                                    📻 Radyo yayını başladı! [YENİ]
+                                </a>
+                                <div style="font-size:9px; color:#0a0; margin-top:3px;">
+                                    ● Canlı yayın devam ediyor
+                                </div>
+                            </td>
+                            <td><span style="color:#0a0; font-weight:bold;">arel</span></td>
+                            <td class="date-anomaly" style="color:#0a0;">Şimdi</td>
+                            <td><span style="color:#0a0;">●</span></td>
+                        </tr>
+                        <tr style="opacity:0.6;">
+                            <td>
+                                <a href="chat.html" class="topic-title">Sohbet odası neden kapalı?</a>
+                            </td>
+                            <td><span style="opacity:0.5">endişeli_üye</span></td>
+                            <td class="date-old">2014-03-17</td>
+                            <td>67</td>
+                        </tr>
+                        <tr style="opacity:0.7;">
+                            <td>
+                                <a href="#" class="topic-title">Üniversite başladı, site için vaktim yok :(</a>
+                                <div style="font-size:9px; color:#999; margin-top:3px;">
+                                    Son mod mesajı
+                                </div>
+                            </td>
+                            <td><span style="opacity:0.5">arel</span></td>
+                            <td class="date-old">2016-08-14</td>
+                            <td>234</td>
+                        </tr>
+                        <tr style="opacity:0.6;">
+                            <td>
+                                <a href="#" class="topic-title">En sevdiğiniz albüm nedir?</a>
+                            </td>
+                            <td><span style="opacity:0.5">nostaljikci</span></td>
+                            <td class="date-old">2015-11-22</td>
+                            <td>1,156</td>
+                        </tr>
+                        <tr style="opacity:0.6;">
+                            <td>
+                                <a href="members.html" class="topic-title">Eski üyelere ne oldu?</a>
+                            </td>
+                            <td><span style="opacity:0.5">hatırlayan</span></td>
+                            <td class="date-old">2015-03-14</td>
+                            <td>445</td>
+                        </tr>
+                        <tr style="opacity:0.5;">
+                            <td>
+                                <a href="#" class="topic-title">2008'i hatırlayan var mı?</a>
+                            </td>
+                            <td><span style="opacity:0.5">nostaljikci</span></td>
+                            <td class="date-old">2013-06-08</td>
+                            <td>892</td>
+                        </tr>
+                        <tr style="background: rgba(0,0,0,0.05); opacity:0.4;">
+                            <td>
+                                <a href="archive.html" class="topic-title" style="color:#666;">
+                                    <span class="glitch-text">█████████ [Veri bozuk]</span>
+                                </a>
+                            </td>
+                            <td><span class="glitch-text">████</span></td>
+                            <td class="date-anomaly">????-??-??</td>
+                            <td>?</td>
+                        </tr>
+                        <tr style="opacity:0.6;">
+                            <td>
+                                <a href="#" class="topic-title">Sözlük 12 nereye gidiyor?</a>
+                                <div style="font-size:9px; color:#999; margin-top:3px;">
+                                    Geleceğe dair endişeler
+                                </div>
+                            </td>
+                            <td><span style="opacity:0.5">endişeli_üye</span></td>
+                            <td class="date-old">2016-07-28</td>
+                            <td>892</td>
+                        </tr>
+                        <tr style="opacity:0.5;">
+                            <td>
+                                <a href="#" class="topic-title">İlk mesajınız ne olmuştu?</a>
+                            </td>
+                            <td><span style="opacity:0.5">sabahçı_kız</span></td>
+                            <td class="date-old">2014-12-11</td>
+                            <td>2,341</td>
+                        </tr>
+                        <tr style="opacity:0.6;">
+                            <td>
+                                <a href="#" class="topic-title">Gece 3'te ne yapıyorsunuz?</a>
+                            </td>
+                            <td><span style="opacity:0.5">geceyarısı</span></td>
+                            <td class="date-old">2013-04-20</td>
+                            <td>3,667</td>
+                        </tr>
+                        <tr style="background: rgba(139,0,0,0.03);">
+                            <td>
+                                <a href="echo.html" class="topic-title" style="color:#8b0000;">
+                                    <span class="glitch-text">?</span>
+                                </a>
+                            </td>
+                            <td><span style="color:#8b0000;">arel</span></td>
+                            <td class="date-anomaly">2 saat önce</td>
+                            <td>?</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- SAYFALAMA -->
+                <div style="margin: 20px 0; text-align: center; font-size: 11px;">
+                    <a href="#" style="color:#666; margin: 0 5px; text-decoration:none; opacity:0.5;">&lt;&lt; Önceki</a>
+                    <a href="#" style="color:#333; margin: 0 5px; font-weight:bold;">1</a>
+                    <a href="#" style="color:#666; margin: 0 5px; text-decoration:none; opacity:0.3;">2</a>
+                    <a href="#" style="color:#666; margin: 0 5px; text-decoration:none; opacity:0.3;">3</a>
+                    <span style="color:#999; margin: 0 5px;">...</span>
+                    <a href="#" style="color:#666; margin: 0 5px; text-decoration:none; opacity:0.3;" class="glitch-text">█</a>
+                    <a href="#" style="color:#666; margin: 0 5px; text-decoration:none; opacity:0.5;">Sonraki &gt;&gt;</a>
+                </div>
+
+                <!-- BİLGİ PANELİ -->
+                <div style="margin: 30px 0; padding: 15px; background: rgba(0,0,0,0.02); border: 1px solid #ddd;">
+                    <h3 style="font-size: 12px; margin-bottom: 10px; color: #3a4a3a;">📖 Sözlük 12 Hakkında</h3>
+                    <div style="font-size: 10px; color: #666; line-height: 1.8;">
+                        <strong>Sözlük 12</strong>, 2008 yılında hayalperest bir grup internet kullanıcısı tarafından kurulmuştur. 
+                        İlk yıllarda günde binlerce mesaj paylaşılan, canlı radyo yayınları yapılan, gece sohbetleriyle ünlü bir topluluk alanıydı.
+                        <br><br>
+                        2016 yılında moderatör <strong style="color:#5a6b5a;">arel</strong>'in üniversiteye başlamasıyla birlikte aktivite azaldı. 
+                        Üyeler yavaş yavaş ayrıldı. Sohbet odası kapandı, radyo yayınları sona erdi.
+                        <br><br>
+                        Ama site hiç kapanmadı. Sunucu hâlâ çalışıyor. Veritabanı hâlâ aktif. Ve bazı şeyler... 
+                        <span style="color:#8b0000;">hâlâ hareket ediyor.</span>
+                        <br><br>
+                        <a href="archive.html" style="color:#8b0000;">→ Daha fazla bilgi için arşive göz atın</a>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; opacity: 0.5; font-size: 9px; text-align: right;">
+                    <span class="typing-indicator"></span>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="sidebar-box">
+                    <h3>İstatistikler</h3>
+                    <div style="font-size:10px; color:#666;">
+                        Toplam üye: <span style="text-decoration:line-through">14,283</span> <span class="glitch-text">???</span><br>
+                        Toplam konu: <span id="topic-count">8,451</span><br>
+                        Toplam mesaj: <span style="opacity:0.7;">127,446</span><br>
+                        Son üye: <span class="date-anomaly">░░░░░</span><br>
+                        <br>
+                        <span style="color:#8b0000;">Çevrimiçi: <span id="online-now">1</span></span>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="animation-delay: 2s;">
+                    <h3>Son aktivite</h3>
+                    <div style="font-size:9px; color:#999;">
+                        <div style="margin: 5px 0;">
+                            <span style="color:#8b0000;">arel</span> mesaj gönderdi<br>
+                            <span class="date-anomaly" style="font-size:8px;">2 saat önce</span>
+                        </div>
+                        <div style="margin: 5px 0; opacity:0.5;">
+                            <span>son_kullanıcı</span> kayıt oldu<br>
+                            <span style="font-size:8px;">2016-08-14</span>
+                        </div>
+                        <div style="margin: 5px 0; opacity:0.5;">
+                            <span>arel</span> radyo açtı<br>
+                            <span style="font-size:8px;">2012-05-20</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="background: rgba(0,255,0,0.05); border-color: #0a0; animation-delay: 3s;">
+                    <h3 style="color:#0a0;">📻 Radyo Durumu</h3>
+                    <div style="font-size:10px; color:#0a0;">
+                        <span style="color:#0f0;">● CANLI YAYIN</span><br>
+                        <div style="margin: 8px 0; font-size:9px;">
+                            Şimdi çalıyor:<br>
+                            <strong id="radio-preview">...</strong>
+                        </div>
+                        <a href="radio.html" style="font-size:9px; color:#0a0; text-decoration:underline;">Dinlemek için tıkla →</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-box" style="opacity:0.3; animation-delay: 4s;">
+                    <h3>Linkler</h3>
+                    <div style="font-size:9px; color:#999;">
+                        <a href="topic.html" style="color:#666;">→ Güncel Konular</a><br>
+                        <a href="members.html" style="color:#666;">→ Üye Listesi</a><br>
+                        <a href="archive.html" style="color:#666;">→ Arşiv</a><br>
+                        <a href="chat.html" style="color:#666; text-decoration:line-through;">→ Sohbet</a><br>
+                        <a href="radio.html" style="color:#0a0;">→ Radyo</a><br>
+                        <br>
+                        <a href="echo.html" style="color:#8b0000;">→ ???</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-box ghost" style="animation-delay: 6s;">
+                    <h3 style="opacity:0.4">⚠ Sistem Uyarısı</h3>
+                    <div style="font-size:9px; color:#666; opacity:0.3;">
+                        Anomali sayısı: <span style="color:#8b0000;">2</span><br>
+                        Son hata: <span class="date-anomaly">bilinmiyor</span><br>
+                        <br>
+                        <span class="glitch-text" style="font-size:8px;">Biri hâlâ burada...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-text" style="font-size: 11px;">
+                Sözlük 12 – hiçbir yer unutulmaz.
+            </div>
+            <div class="copyright">
+                © 1998-<span class="year-glitch" id="year">2000</span> | 
+                <span style="opacity:0.5">Tüm hakları <span class="glitch-text">████████</span></span>
+            </div>
+            <div style="margin-top:10px; opacity:0.3; font-size:8px;">
+                <span class="typing-indicator"></span>
+                <span id="hidden-message" style="display:none; color:#8b0000;">hoş geldin geri</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Index özel efektler
+        document.addEventListener('DOMContentLoaded', function() {
+            // Uptime sayacı
+            const uptimeEl = document.getElementById('uptime');
+            let uptime = 6847;
+            setInterval(() => {
+                if (Math.random() > 0.9) {
+                    uptime += Math.floor(Math.random() * 100);
+                    uptimeEl.textContent = uptime + ' gün';
+                }
+            }, 10000);
+
+            // Topic total artışı
+            const topicTotal = document.getElementById('topic-total');
+            let total = 8451;
+            setInterval(() => {
+                if (Math.random() > 0.95) {
+                    total++;
+                    topicTotal.textContent = total.toLocaleString();
+                    topicTotal.style.color = '#8b0000';
+                    setTimeout(() => {
+                        topicTotal.style.color = '#333';
+                    }, 1000);
+                }
+            }, 15000);
+
+            // Radyo preview (fake)
+            const radioPreview = document.getElementById('radio-preview');
+            const songs = [
+                'Gece Kuşları Açılış',
+                'Nostaljik Anılar',
+                'Gece Yarısı Blues',
+                '2008 Özel Yayın'
+            ];
+            let songIndex = 0;
+            setInterval(() => {
+                radioPreview.textContent = songs[songIndex];
+                songIndex = (songIndex + 1) % songs.length;
+            }, 5000);
+            radioPreview.textContent = songs[0];
+
+            // Hızlı erişim kartlarına hover efekti
+            const cards = document.querySelectorAll('[style*="grid-template-columns"] a > div');
+            cards.forEach(card => {
+                card.parentElement.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-3px)';
+                    card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+                });
+                card.parentElement.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = 'none';
+                });
+            });
+
+            // Rastgele satır highlight
+            const rows = document.querySelectorAll('.forum-table tbody tr');
+            setInterval(() => {
+                if (Math.random() > 0.95) {
+                    const randomRow = rows[Math.floor(Math.random() * rows.length)];
+                    const originalBg = randomRow.style.background;
+                    randomRow.style.background = 'rgba(139,0,0,0.1)';
+                    setTimeout(() => {
+                        randomRow.style.background = originalBg;
+                    }, 500);
+                }
+            }, 8000);
+        });
+    </script>
+</body>
+</html>
